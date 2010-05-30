@@ -76,6 +76,7 @@ Dual licensed under the MIT and GPL licenses.
 		$containerDivText.prependTo($containerDiv);
 		$newUl.appendTo($containerDiv);
 		$input.hide();
+		$containerDiv.css('width', $input.css('width'));
 
 		//added by Justin Beasley (used for lists initialized while hidden)
 		$containerDivText.data('ssReRender',!$containerDivText.is(':visible'));
@@ -155,13 +156,15 @@ Dual licensed under the MIT and GPL licenses.
                 if (containerPosY+newUlHeight >= docHeight){
                     $newUl.css({
                         top: '-'+newUlHeight+'px',
-                        height: newUlHeight
+                        height: newUlHeight,
+						width: $input.css('width')
                     });
                     $input.onTop = true;
                 } else {
                     $newUl.css({
                         top: containerHeight+'px',
-                        height: newUlHeight
+                        height: newUlHeight,
+						width: $input.css('width')
                     });
                     $input.onTop = false;
                 }
@@ -200,7 +203,7 @@ Dual licensed under the MIT and GPL licenses.
                         .removeClass('newListSelFocus');
 
                 //show/hide this menu
-                $newUl.toggle();
+                $newUl.slideToggle();
                 positionFix();
                 //scroll list to selected item
                 $newLi.eq(currentIndex).focus();
